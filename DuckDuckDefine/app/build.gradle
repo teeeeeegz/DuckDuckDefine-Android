@@ -1,0 +1,125 @@
+apply plugin: "com.android.application"
+apply plugin: "me.tatarka.retrolambda"
+apply plugin: "com.getkeepsafe.dexcount"
+
+// Manifest version information
+def final VERSION_MAJOR = 1
+def final VERSION_MINOR = 0
+def final VERSION_PATCH = 0
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "au.com.michaeltigas.duckduckdefine"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        development {
+            buildConfigField "String", "DUCKDUCKGO_API_URL", '"https://api.duckduckgo.com"'
+            buildConfigField "String", "SHAREDPREFS_NAME", '"duckduckdefine.pref_file_name.development"'
+        }
+
+        production {
+            buildConfigField "String", "DUCKDUCKGO_API_URL", '"https://api.duckduckgo.com"'
+            buildConfigField "String", "SHAREDPREFS_NAME", '"duckduckdefine.pref_file_name.production"'
+        }
+    }
+
+    compileOptions {
+        // Java 1.8 - Retrolambda java version requirement
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        preDexLibraries true // Faster incremental builds - Disable for CI
+    }
+}
+
+///// Library dependency version values /////
+// Google libraries
+def final V_SUPPORT_LIB             = "25.3.0"
+
+// Architecture libraries
+def final V_BUTTERKNIFE             = "8.5.1"
+def final V_DAGGER                  = "2.9"
+def final V_RXJAVA                 = "2.0.7"
+def final V_RXANDROID               = "2.0.1"
+def final V_RETROLAMBDA             = "2.5.1"
+
+// Network libraries
+def final V_RETROFIT                = "2.2.0"
+def final V_OKHTTP                  = "3.6.0"
+def final V_MOSHI                   = "1.4.0"
+
+// Image libraries
+def final V_PICASSO                 = "2.5.2"
+def final V_PICASSO_OKHTTP3_DL      = "1.0.2"
+
+// Dev libraries
+def final V_TIMBER                  = "4.5.1"
+
+// Other libraries
+def final V_ARROW                   = "1.0.0"
+
+// Test libraries
+def final V_JUNIT                   = "4.12"
+def final V_SUPPORTTEST_ESPRESSO    = "2.2.2"
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Google Support libraries
+    compile "com.android.support:appcompat-v7:$V_SUPPORT_LIB"
+    compile "com.android.support:design:$V_SUPPORT_LIB"
+    compile "com.android.support:recyclerview-v7:$V_SUPPORT_LIB"
+
+    // Architecture libraries
+    compile "com.jakewharton:butterknife:$V_BUTTERKNIFE"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$V_BUTTERKNIFE"
+    compile "com.google.dagger:dagger:$V_DAGGER"
+    annotationProcessor "com.google.dagger:dagger-compiler:$V_DAGGER"
+    compile "io.reactivex.rxjava2:rxjava:$V_RXJAVA"
+    compile "io.reactivex.rxjava2:rxandroid:$V_RXANDROID"
+    retrolambdaConfig "net.orfjackal.retrolambda:retrolambda:$V_RETROLAMBDA"
+
+    // Network libraries
+    compile "com.squareup.retrofit2:retrofit:$V_RETROFIT"
+    compile "com.squareup.retrofit2:converter-moshi:$V_RETROFIT"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$V_RETROFIT"
+    compile "com.squareup.okhttp3:okhttp:$V_OKHTTP"
+    compile "com.squareup.okhttp3:logging-interceptor:$V_OKHTTP"
+    compile "com.squareup.moshi:moshi:$V_MOSHI"
+
+    // Image libraries
+    compile "com.squareup.picasso:picasso:$V_PICASSO"
+    compile "com.jakewharton.picasso:picasso2-okhttp3-downloader:$V_PICASSO_OKHTTP3_DL"
+
+    // Dev libraries
+    compile "com.jakewharton.timber:timber:$V_TIMBER"
+
+    // Other libraries
+    compile "com.fernandocejas:arrow:$V_ARROW"
+
+    // Unit tests dependencies
+    testCompile "junit:junit:$V_JUNIT"
+
+    // Instrumentation test dependencies
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$V_SUPPORTTEST_ESPRESSO", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}

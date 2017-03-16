@@ -1,0 +1,31 @@
+buildscript {
+
+    ///// Buildscript dependency version values /////
+    def final V_GRADLE_PLUGIN       = "2.3.0"
+    def final V_RETROLAMBDA_GRADLE  = "3.5.0"
+    def final V_DEXCOUNT            = "0.6.2"
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:$V_GRADLE_PLUGIN"
+        classpath "me.tatarka:gradle-retrolambda:$V_RETROLAMBDA_GRADLE"
+        classpath "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$V_DEXCOUNT"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "3.2.1"
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

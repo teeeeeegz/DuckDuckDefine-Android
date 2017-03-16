@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DuckDuckDefine</string>
+    <string name="activity_search">Define</string>
+</resources>

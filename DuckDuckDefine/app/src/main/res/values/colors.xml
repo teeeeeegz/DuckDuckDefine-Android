@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/material_red_500</color>
+    <color name="colorPrimaryDark">@color/material_red_700</color>
+    <color name="colorAccent">@color/material_blue_a200</color>
+
+    <!-- Swipe Refresh colour palette -->
+    <color name="swiperefreshcolor_one">@color/material_red_100</color>
+    <color name="swiperefreshcolor_two">@color/material_red_300</color>
+    <color name="swiperefreshcolor_three">@color/material_red_600</color>
+    <color name="swiperefreshcolor_four">@color/material_red_900</color>
+
+    <!-- Material Colours -->
+    <color name="material_red_100">#FFCDD2</color>
+    <color name="material_red_300">#E57373</color>
+    <color name="material_red_600">#E53935</color>
+    <color name="material_red_900">#B71C1C</color>
+    <color name="material_red_500">#F44336</color>
+    <color name="material_red_700">#D32F2F</color>
+    <color name="material_blue_a200">#448AFF</color>
+</resources>
