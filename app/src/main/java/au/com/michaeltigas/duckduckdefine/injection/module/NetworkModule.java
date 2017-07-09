@@ -76,7 +76,7 @@ public class NetworkModule {
      * @return Instance of Retrofit
      */
     @Provides @Singleton
-    Retrofit provideRevPropertyRetrofit(HttpUrl baseUrl, OkHttpClient client, Moshi moshi) {
+    Retrofit provideRetrofit(HttpUrl baseUrl, OkHttpClient client, Moshi moshi) {
         return new Retrofit.Builder()
                 .client(client)
                 .baseUrl(baseUrl)

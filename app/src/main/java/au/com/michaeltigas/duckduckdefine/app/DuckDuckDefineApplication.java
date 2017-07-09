@@ -19,7 +19,7 @@ public class DuckDuckDefineApplication extends Application {
     ApplicationComponent applicationComponent;
 
     /**
-     * Return an instance of the RevApplication class
+     * Return an instance of the DuckDuckDefineApplication class
      *
      * @param context
      * @return Singleton instance of DuckDuckDefineApplication class
